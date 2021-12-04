@@ -253,6 +253,81 @@ namespace FinalProj.Data
                 }
             }
         }
+
+        public List<FavFood> GetAllFoods()
+        {
+            return _context.FavFoods.ToList();
+        }
+
+        public FavFood GetFoodById(int id)
+        {
+            return _context.FavFoods.Where(x => x.Id.Equals(id)).FirstOrDefault();
+        }
+
+        public int? RemoveFoodById(int id)
+        {
+            var food = this.GetFoodById(id);
+            if (food == null)
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    _context.FavFoods.Remove(food);
+                    _context.SaveChanges();
+                    return 1;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int? UpdateFood(FavFood food)
+        {
+            var updatedFood = this.GetFoodById(food.Id);
+            if (updatedFood == null)
+            {
+                return null;
+            }
+            else
+            {
+                updatedFood.Id = food.Id;
+                updatedFood.FavoriteFood = food.FavoriteFood;
+                updatedFood.SecondFav = food.SecondFav;
+                updatedFood.LeastFav = food.LeastFav;
+                updatedFood.MealOfTheDay = food.MealOfTheDay;
+                try
+                {
+                    _context.FavFoods.Update(updatedFood);
+                    _context.SaveChanges();
+                    return 1;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int? AddFood(FavFood food)
+        {
+            var foods = _context.FavFoods.Where(x => x.Id.Equals(food.Id)).FirstOrDefault();
+
+            try
+            {
+                _context.FavFoods.Add(food);
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 
 }

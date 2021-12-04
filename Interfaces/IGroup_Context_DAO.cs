@@ -24,6 +24,12 @@ namespace FinalProj.Interfaces
         int? RemoveCourseByID(int id);
         int? UpdateCourse(Course course);
         int? Add(Course course);
+
+        List<FavFood> GetAllFoods();
+        FavFood GetFoodById(int id);
+        int? RemoveFoodById(int id);
+        int? UpdateFood(FavFood food);
+        int? AddFood(FavFood food);
     }
 
    

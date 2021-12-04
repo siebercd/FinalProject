@@ -30,6 +30,12 @@ namespace FinalProj.Data
                 new Course { Id = 2, FavoriteITSubject = "Programming", FavoriteLanguage = "C#", YearsInIT = "2", CareerGoal = "Yes" },
                 new Course { Id = 3, FavoriteITSubject = "Human Computer Interaction", FavoriteLanguage = "C#", YearsInIT = "25", CareerGoal = "Software Analyst" },
                 new Course { Id = 4, FavoriteITSubject = "Database Management", FavoriteLanguage = "C#", YearsInIT = "3", CareerGoal = "QA/Dev" });
+
+            builder.Entity<FavFood>().HasData(
+                new FavFood { Id = 1, FavoriteFood = "Hamburgers", SecondFav = "Breakfast Sandwich", LeastFav = "Tomato", MealOfTheDay = "Dinner"},
+                new FavFood { Id = 2, FavoriteFood = "Chipotle Burrito", SecondFav = "Bosco Sticks", LeastFav = "Cupcakes", MealOfTheDay = "Breakfast"},
+                new FavFood { Id = 3, FavoriteFood = "Chicken and Broccoli Alfredo", SecondFav = "Shrimp Scampi", LeastFav = "Hot Dogs", MealOfTheDay = "Dinner"},
+                new FavFood { Id = 4, FavoriteFood = "Chicken Wings", SecondFav = "Burgers", LeastFav = "Sushi", MealOfTheDay = "Lunch"});
           
     }
 
@@ -38,6 +44,8 @@ namespace FinalProj.Data
         public DbSet<Group_Hobbies> GroupHobbies { get; set; }
 
         public DbSet<Course> Course { get; set; }
+
+        public DbSet<FavFood> FavFoods { get; set; }
     }
 
 
